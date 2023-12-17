@@ -80,6 +80,9 @@ header {
 
 .btn-row label {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 180px;
     height: 50px;
 }
@@ -104,6 +107,22 @@ input[type="radio"] {
 input[type="radio"]:checked + .radio-button {
     background-color: #4CAF50;
     color: white;
+}
+
+.correct-mark {
+    position: absolute;
+    color: rgb(136, 255, 32);
+    font-weight: bold;
+    font-size: 120px;
+    z-index: 99;
+}
+
+.incorrect-mark {
+    position: absolute;
+    color: rgb(255, 18, 18);
+    font-weight: bold;
+    font-size: 120px;
+    z-index: 99;
 }
 
 .to-grade {
