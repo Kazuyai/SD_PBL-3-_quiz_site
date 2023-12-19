@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SD PBL(3)</title>
+    <link rel="stylesheet" href="./common.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <header>
         <h3 class="logo">SD PBL(3)</h3>
         <ul class="nav-list">
-            <li class="nav-item"><a href="#">ホーム</a></li>
-            <li class="nav-item"><a href="#">問題</a></li>
-            <li class="nav-item"><a href="#">採点</a></li>
-            <li class="nav-item"><a href="#">結果</a></li>
+            <li class="nav-item"><a href="#">クイズ</a></li>
+            <li class="nav-item"><a href="#">学ぼう</a></li>
         </ul>
+        <div class="openbtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div id="hamburger-menu">
+            <ul class="hamburger-list">
+                <li class="hamburger-item"><a href="#">クイズ</a></li>
+                <li class="hamburger-item"><a href="#">学ぼう</a></li>
+            </ul>
+        </div>
     </header>
-    <h1>フェイクニュースクイズ</h1>
+    <h1 class="title">フェイクニュースクイズ</h1>
     <div class="quiz-box">
-        
+        <!--ここに問題が入る-->
     </div>
-    <button class="to-grade" onclick="showResults()">採点する</button>
-
     <div id="results"></div>
+    <button class="to-grade" onclick="showResults()">採点する</button>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="./common.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>

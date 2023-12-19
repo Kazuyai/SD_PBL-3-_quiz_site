@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    margin-top: 80px;
+}
+
+h1 {
+    font-size: 7vw;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    top: 0;
+    background-color: #ddffa7;
+    z-index: 100;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+}
+
+.openbtn{
+    display: none;
+	position: relative;
+	background:#919191;
+	cursor: pointer;
+    width: 50px;
+    height:50px;
+	border-radius: 5px;
+    z-index: 110;
+}
+
+.openbtn span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+	background: #e6e6e6;
+  	width: 45%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+#hamburger-menu {
+    display: none;
+    background-color: #838484bd;
+    transform-origin:right top;
+    z-index: 101;
+}
+
+#hamburger-menu.active {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: rotate-in 0.3s ease-in-out backwards;
+}
+
+#hamburger-menu.active .hamburger-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+@keyframes rotate-in {
+    0% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#hamburger-menu.active .hamburger-item {
+    width: 50%;
+    font-size: 7vw;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-list {
+        display: none;
+    }
+
+    .openbtn {
+        display: block;
+    }
+}
