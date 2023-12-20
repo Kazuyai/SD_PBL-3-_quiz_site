@@ -32,7 +32,7 @@ function convertCSVtoArray(str){
 function getCSV(){
     return new Promise(function(resolve, reject){
         var req = new XMLHttpRequest();
-        req.open("get", "./quizzes.csv", true);
+        req.open("get", "quizzes.csv", true);
         req.send(null);
 
         req.onload = function(){
