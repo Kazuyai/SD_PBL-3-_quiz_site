@@ -1,4 +1,5 @@
 $(".openbtn").click(function () {
     $(this).toggleClass('active');
-    $("#hamburger-menu").toggleClass('active');
+    $("#g-nav").toggleClass('panelactive');
+    $(".circle-bg").toggleClass('circleactive');
 });

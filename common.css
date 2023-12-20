@@ -98,46 +98,88 @@ header {
     width: 30%;
 }
 
-#hamburger-menu {
-    display: none;
-    background-color: #838484bd;
-    transform-origin:right top;
-    z-index: 101;
-}
-
-#hamburger-menu.active {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    top: 0;
+#g-nav.panelactive{
+    position:fixed;
+    z-index: 102;
+	top: 0;
     left: 0;
-    animation: rotate-in 0.3s ease-in-out backwards;
+	width:100%;
+    height: 100vh;
 }
 
-#hamburger-menu.active .hamburger-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+.circle-bg{
+    position: fixed;
+	z-index:3;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #919191;
+	transform: scale(0);
+    top:calc(50% - 50px);
+    left:calc(50% - 50px);
+    transition: all .6s;
 }
 
-@keyframes rotate-in {
-    0% {
-        transform: rotate(90deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+.circle-bg.circleactive{
+	transform: scale(50);
 }
 
-#hamburger-menu.active .hamburger-item {
-    width: 50%;
-    font-size: 7vw;
-    font-weight: bold;
+#g-nav-list{
+    display: none;
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#g-nav.panelactive #g-nav-list{
+     display: block;
+}
+
+#g-nav ul {
+	opacity: 0;
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+#g-nav.panelactive ul {
+    opacity:1;
+}
+
+#g-nav.panelactive ul li{
+animation-name:gnaviAnime;
+animation-duration:1s;
+animation-delay:.2s;
+animation-fill-mode:forwards;
+opacity:0;
+}
+@keyframes gnaviAnime{
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+#g-nav li{
+	text-align: center; 
+	list-style: none;
+}
+
+#g-nav li a{
+	color: #333;
+	text-decoration: none;
+	padding:10px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
