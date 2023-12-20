@@ -21,8 +21,9 @@ function convertCSVtoArray(str){
         var quiz = {
             question: row[0],
             options: row.slice(1, -1), // 最後の要素（正解のインデックス）を除く
-            correct: `radio${i}-${row[row.length - 1]}` // 正解のIDを生成
+            correct: row[row.length - 1] // 正解のIDを生成
         };
+        console.log(quiz.correct);
         result.push(quiz);
     }
     return result;
@@ -33,14 +34,19 @@ function getCSV(){
     return new Promise(function(resolve, reject){
         var req = new XMLHttpRequest();
         req.open("get", "quizzes.csv", true);
+        req.overrideMimeType('text/plain; charset=Shift-jis'); // UTF-8として解釈するように指定
         req.send(null);
 
         req.onload = function(){
-            resolve(convertCSVtoArray(req.responseText));
+            if (req.status === 200) {
+                resolve(convertCSVtoArray(req.responseText));
+            } else {
+                reject(new Error("CSVファイルの読み込みに失敗しました: " + req.status));
+            }
         };
 
         req.onerror = function() {
-            reject(new Error("CSVのロードに失敗しました"));
+            reject(new Error("CSVファイルの読み込み中にエラーが発生しました"));
         };
     });
 }
@@ -71,6 +77,8 @@ function generateQuizzes(quizzes) {
     displayedQuizzes = quizzes;
 
     quizzes.forEach((quiz, quizIndex) => {
+        quiz.correct = `radio${quizIndex + 1}-${quiz.correct}`; // 正解のIDを生成
+        console.log(quiz.correct);
         const quizCard = document.createElement('div');
         quizCard.className = 'quiz-card';
         quizCard.innerHTML = `
@@ -104,7 +112,6 @@ document.addEventListener('DOMContentLoaded', loadData);
 function showResults() {
     let currentQuiz = 0;
     const resultsContainer = document.getElementById('results');
-    const headerHeight = document.querySelector('header').offsetHeight;
     resultsContainer.innerHTML = ''; // 既存の結果をクリア
 
     function displayResult() {
@@ -141,7 +148,7 @@ function showResults() {
         // ヘッダーとビューポートの高さを考慮したスクロール
         const quizCard = document.getElementsByClassName('quiz-card')[currentQuiz];
         const quizCardHeight = quizCard.offsetHeight;
-        const position = quizCard.getBoundingClientRect().top + window.pageYOffset - headerHeight - (window.innerHeight - quizCardHeight) / 2;
+        const position = quizCard.getBoundingClientRect().top + window.pageYOffset - (window.innerHeight - quizCardHeight) / 2;
         window.scrollTo({ top: position, behavior: 'smooth' });
 
         currentQuiz++;
