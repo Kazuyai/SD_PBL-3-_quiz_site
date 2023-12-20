@@ -116,7 +116,7 @@ function showResults() {
         const result = document.createElement('div');
         let isCorrect = false;
 
-        if (userAnswer && userAnswer.id === quizzes[currentQuiz].correct) {
+        if (userAnswer && userAnswer.id === displayedQuizzes[currentQuiz].correct) {
             result.textContent = `${currentQuiz + 1}問目: 正解！`;
             isCorrect = true;
         } else {
@@ -150,3 +150,11 @@ function showResults() {
 
     displayResult();
 }
+
+$(document).ready(function(){
+    //デバイス判定（タッチが有効か否か）
+    var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+    //デバイス判定によるイベントの決定
+    var eventType = (isTouchDevice) ? 'touchend' : 'click';
+    $('.to-grade').on(eventType, showResults);
+});
