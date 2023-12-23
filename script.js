@@ -9,7 +9,7 @@ let displayedQuizzes = [];
 // CSVデータを読み込んでオブジェクトの配列に変換する関数
 function convertCSVtoArray(str){
     var result = [];
-    var tmp = str.split("\n");
+    var tmp = str.replace(/\r/g, '').split("\n");
 
     // 最初の行（ヘッダー）を除外してループ
     for(var i = 1; i < tmp.length; ++i){
@@ -23,7 +23,6 @@ function convertCSVtoArray(str){
             options: row.slice(1, -1), // 最後の要素（正解のインデックス）を除く
             correct: row[row.length - 1] // 正解のIDを生成
         };
-        console.log(quiz.correct);
         result.push(quiz);
     }
     return result;
@@ -78,7 +77,6 @@ function generateQuizzes(quizzes) {
 
     quizzes.forEach((quiz, quizIndex) => {
         quiz.correct = `radio${quizIndex + 1}-${quiz.correct}`; // 正解のIDを生成
-        console.log(quiz.correct);
         const quizCard = document.createElement('div');
         quizCard.className = 'quiz-card';
         quizCard.innerHTML = `
@@ -86,19 +84,12 @@ function generateQuizzes(quizzes) {
             <p class="quiz-sentence">${quiz.question}</p>
             <div class="answer-btn-box">
                 ${quiz.options.reduce((html, option, optIndex) => {
-                    // 新しい行を開始するために、インデックスが偶数の時に開始タグを追加
-                    if (optIndex % 2 === 0) html += '<div class="btn-row">';
-
                     html += `
                         <label>
                             <input type="radio" name="radio${quizIndex + 1}" id="radio${quizIndex + 1}-${optIndex + 1}">
                             <span class="radio-button">${option}</span>
                         </label>
                     `;
-
-                    // 行を終了するために、インデックスが奇数または最後の要素の時に終了タグを追加
-                    if (optIndex % 2 === 1 || optIndex === quiz.options.length - 1) html += '</div>';
-
                     return html;
                 }, '')}
             </div>
@@ -122,8 +113,7 @@ function showResults() {
         const userAnswer = document.querySelector(`input[name="radio${currentQuiz + 1}"]:checked`);
         const result = document.createElement('div');
         let isCorrect = false;
-
-        if (userAnswer && userAnswer.id === displayedQuizzes[currentQuiz].correct) {
+        if (userAnswer && userAnswer.id == displayedQuizzes[currentQuiz].correct) {
             result.textContent = `${currentQuiz + 1}問目: 正解！`;
             isCorrect = true;
         } else {
