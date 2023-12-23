@@ -1,3 +1,13 @@
+.container {
+    height: 100vh;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    scroll-snap-align: start;
+}
+
 #loading {
     position: fixed;
     width: 100%;
@@ -20,13 +30,28 @@
 
 .title {
     padding: 30px 20px;
+    font-weight: 900;
 }
 
 #explain {
     height: 100vh;
 }
 
+#explain h2 {
+    margin: 3em 0;
+    font-weight: 900;
+    opacity: 0;
+    transform: translate(0, 30px);
+}
+
+#explain.in-view h2 {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: all 1.4s ease-in-out;
+}
+
 #explain p {
+    margin-bottom: 1.5em;
     opacity: 0;
     transform: translate(0, 30px);
 }

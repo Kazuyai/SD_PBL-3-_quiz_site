@@ -6,7 +6,7 @@
     <title>SD PBL(3)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./common.css">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -30,21 +30,27 @@
         <div class="circle-bg"></div>
     </header>
     <div id="loading">読み込み中...</div>
-    <section id="main-visual">
-        <h1 class="title">フェイクニュースクイズ</h1>
-        <p class="sub-title">フェイクニュースについてどれくらい知ってる？</p>        
-    </section>
-    <section id="explain" class="fadein">
-        <p style="transition-delay: 0.2s;">フェイクニュースに関するクイズが<br>10問出題されます</p>
-        <p style="transition-delay: 1.4s;">最も正しいと思うものを選んでください</p>
-    </section>
-    <section id="quiz">
-        <div class="quiz-box">
-            <!--ここに問題が入る-->
-        </div>
-        <div id="results"></div>
-        <button class="to-grade">採点する</button>
-    </section>
+    <div class="container">
+        <section id="main-visual">
+            <h1 class="title">フェイクニュースクイズ</h1>
+            <p class="sub-title">フェイクニュースについて<br>どれくらい知ってる？</p>        
+        </section>
+        <section id="explain" class="fadein">
+            <h2 style="transition-delay: 0.2s;">フェイクニュースについて<br>知っていますか？</h2>
+            <p style="transition-delay: 1.6s;">近年、問題になっているフェイクニュース</p>
+            <p style="transition-delay: 2.8s;">皆さんは意識できているでしょうか？</p>
+            <p style="transition-delay: 4.0s;">このクイズを通して<br>フェイクニュースについての<br>認識を確かめてみましょう</p>
+            <p style="transition-delay: 5.2s;">フェイクニュースに関するクイズが<br>10問出題されます</p>
+            <p style="transition-delay: 6.4s;">最も正しいと思うものを選んでください</p>
+        </section>
+        <section id="quiz">
+            <div class="quiz-box">
+                <!--ここに問題が入る-->
+            </div>
+            <div id="results"></div>
+            <button class="to-grade">採点する</button>
+        </section>
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="./common.js"></script>
     <script src="./script.js"></script>
