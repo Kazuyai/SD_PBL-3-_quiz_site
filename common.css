@@ -5,7 +5,8 @@
 
 body {
     text-align: center;
-    margin-top: 80px;
+    font-family: "Noto Sans JP";
+    font-weight: bold;
 }
 
 h1 {
