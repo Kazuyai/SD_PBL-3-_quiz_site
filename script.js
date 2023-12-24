@@ -1,11 +1,10 @@
-// ロード画面を非表示にする関数
-function hideLoadingScreen() {
-    document.getElementById('loading').style.display = 'none';
-}
+$(window).on('load',function(){
+    $("#splash").delay(1500).fadeOut('slow');
+    $("#splash_logo").delay(1200).fadeOut('slow');
+});
 
 let displayedQuizzes = [];
 
-// CSVデータを読み込んでオブジェクトの配列に変換する関数
 // CSVデータを読み込んでオブジェクトの配列に変換する関数
 function convertCSVtoArray(str){
     var result = [];
@@ -56,7 +55,6 @@ async function loadData() {
         const allQuizzes = await getCSV();
         const randomQuizzes = pickRandomQuizzes(allQuizzes, 10);
         generateQuizzes(randomQuizzes);
-        hideLoadingScreen();
     } catch (error) {
         console.error(error.message);
     }
