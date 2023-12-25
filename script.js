@@ -139,6 +139,7 @@ function showResults() {
         currentQuiz++;
         if (currentQuiz >= displayedQuizzes.length) {
             $('.sns-box').css('display','flex');
+            displayScore();
             let correctAnswerRate = Math.round((correctAnswers / displayedQuizzes.length) * 100);
             let text;
             if(correctAnswerRate == 0) {
@@ -155,7 +156,17 @@ function showResults() {
 
             return;
         }
+
+        $('.sns-box').css('display','none');
         setTimeout(displayResult, 3000);
+    }
+
+    function displayScore() {
+        let scoreText = `あなたのスコア: ${correctAnswers * 100 / displayedQuizzes.length}点`;
+        let scoreDisplay = document.createElement('div');
+        scoreDisplay.textContent = scoreText;
+        scoreDisplay.className = 'quiz-score';
+        resultsContainer.appendChild(scoreDisplay);
     }
 
     displayResult();

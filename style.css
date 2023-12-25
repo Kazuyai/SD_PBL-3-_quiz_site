@@ -287,6 +287,11 @@ input[type="radio"]:checked + .radio-button {
 	padding-top: 30px;
 }
 
+.quiz-score {
+	padding: 20px 0;
+	font-size: 5vw;
+}
+
 .to-grade {
 	width: 90%;
 	max-width: 600px;
