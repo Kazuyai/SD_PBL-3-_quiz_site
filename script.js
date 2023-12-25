@@ -138,6 +138,7 @@ function showResults() {
 
         currentQuiz++;
         if (currentQuiz >= displayedQuizzes.length) {
+            setTimeout(scrollToResults, 3000);
             $('.sns-box').css('display','flex');
             displayScore();
             let correctAnswerRate = Math.round((correctAnswers / displayedQuizzes.length) * 100);
@@ -159,6 +160,13 @@ function showResults() {
 
         $('.sns-box').css('display','none');
         setTimeout(displayResult, 3000);
+    }
+
+    function scrollToResults() {
+        const results = document.getElementById('results');
+        const resultsHeight = results.offsetHeight;
+        const resultsPosition = results.getBoundingClientRect().top + window.pageYOffset - (window.innerHeight - resultsHeight) / 2;
+        window.scrollTo({ top: resultsPosition, behavior: 'smooth' });
     }
 
     function displayScore() {
