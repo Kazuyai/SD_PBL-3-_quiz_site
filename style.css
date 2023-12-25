@@ -307,10 +307,11 @@ input[type="radio"]:checked + .radio-button {
 }
 
 .sns-box {
-	display: flex;
+	display: none;
 	flex-direction: row;
 	align-items: center;
 	gap: 20px;
+	padding-top: 5vh;
 }
 
 .b-twitter,

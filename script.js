@@ -100,19 +100,17 @@ document.addEventListener('DOMContentLoaded', loadData);
 
 function showResults() {
     let currentQuiz = 0;
+    let correctAnswers = 0;
     const resultsContainer = document.getElementById('results');
     resultsContainer.innerHTML = ''; // 既存の結果をクリア
 
     function displayResult() {
-        if (currentQuiz >= displayedQuizzes.length) {
-            return; // すべてのクイズが完了したら終了
-        }
-
         const userAnswer = document.querySelector(`input[name="radio${currentQuiz + 1}"]:checked`);
         const result = document.createElement('div');
         let isCorrect = false;
         if (userAnswer && userAnswer.id == displayedQuizzes[currentQuiz].correct) {
             result.textContent = `${currentQuiz + 1}問目: 正解！`;
+            correctAnswers++;
             isCorrect = true;
         } else {
             result.textContent = `${currentQuiz + 1}問目: 不正解`;
@@ -127,10 +125,9 @@ function showResults() {
             mark.className = isCorrect ? 'correct-mark' : 'incorrect-mark';
             userAnswer.parentNode.appendChild(mark);
         
-            // アニメーションのために一定時間後に不透明度を変更
             setTimeout(() => {
                 mark.style.opacity = 1;
-            }, 100); // 小さな遅延を追加してCSSのトランジションが適用されるようにする
+            }, 100);
         }        
 
         // ヘッダーとビューポートの高さを考慮したスクロール
@@ -140,7 +137,25 @@ function showResults() {
         window.scrollTo({ top: position, behavior: 'smooth' });
 
         currentQuiz++;
-        setTimeout(displayResult, 3000); // 次の結果を表示するまでの間隔
+        if (currentQuiz >= displayedQuizzes.length) {
+            $('.sns-box').css('display','flex');
+            let correctAnswerRate = Math.round((correctAnswers / displayedQuizzes.length) * 100);
+            let text;
+            if(correctAnswerRate == 0) {
+                text = encodeURIComponent(`フェイクニュースクイズの点数は${correctAnswerRate}点です。\n残念…`);    
+            } else if(correctAnswerRate == 100) {
+                text = encodeURIComponent(`フェイクニュースクイズの点数は${correctAnswerRate}点です。\nおめでとう！`);    
+            } else {
+                text = encodeURIComponent(`フェイクニュースクイズの点数は${correctAnswerRate}点です。\n`);    
+            }
+            let twitterUrl = `https://twitter.com/intent/tweet?text=${text}&hashtags=SD_PBL3&url=https://kazuyai.github.io/SD_PBL-3-_quiz_site/`;
+            document.getElementById('twitter-share-link').setAttribute('href', twitterUrl);
+            let lineUrl = `http://line.me/R/msg/text/?${text} https://kazuyai.github.io/SD_PBL-3-_quiz_site/`;
+            document.getElementById('line-share-link').setAttribute('href', lineUrl);
+
+            return;
+        }
+        setTimeout(displayResult, 3000);
     }
 
     displayResult();
