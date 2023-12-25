@@ -76,7 +76,7 @@ function generateQuizzes(quizzes) {
     quizzes.forEach((quiz, quizIndex) => {
         quiz.correct = `radio${quizIndex + 1}-${quiz.correct}`; // 正解のIDを生成
         const quizCard = document.createElement('div');
-        quizCard.className = 'quiz-card';
+        quizCard.className = 'quiz-card fadein';
         quizCard.innerHTML = `
             <p class="quiz-num"><span class="big">${quizIndex + 1}</span>問目</p>
             <p class="quiz-sentence">${quiz.question}</p>

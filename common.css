@@ -155,19 +155,19 @@ header {
 }
 
 #g-nav.panelactive ul li{
-animation-name:gnaviAnime;
-animation-duration:1s;
-animation-delay:.2s;
-animation-fill-mode:forwards;
-opacity:0;
+    animation-name:gnaviAnime;
+    animation-duration:1s;
+    animation-delay:.2s;
+    animation-fill-mode:forwards;
+    opacity:0;
 }
 @keyframes gnaviAnime{
-0% {
-opacity: 0;
-}
-100% {
-opacity: 1;
-}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 #g-nav li{
@@ -182,6 +182,7 @@ opacity: 1;
 	display: block;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+    font-size: 6vw;
 	font-weight: bold;
 }
 
@@ -189,4 +190,15 @@ opacity: 1;
     .nav-list {
         display: none;
     }
+}
+
+.fadein {
+	opacity: 0;
+	transform: translate(0, 30px);
+}
+
+.in-view {
+	opacity: 1;
+	transform: translate(0, 0);
+	transition: all 1.4s ease-in-out;
 }
