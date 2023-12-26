@@ -292,7 +292,8 @@ input[type="radio"]:checked + .radio-button {
 	font-size: 5vw;
 }
 
-.to-grade {
+.to-grade,
+.try-again {
 	width: 90%;
 	max-width: 600px;
 	margin: 50px 0;
@@ -306,7 +307,8 @@ input[type="radio"]:checked + .radio-button {
 	transition: 0.24s;
 }
 
-.to-grade:hover {
+.to-grade:hover,
+.try-again:hover {
 	background-color: #53b300;
 	color: white;
 }

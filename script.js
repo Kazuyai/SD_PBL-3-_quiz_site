@@ -55,6 +55,12 @@ async function loadData() {
         const allQuizzes = await getCSV();
         const randomQuizzes = pickRandomQuizzes(allQuizzes, 10);
         generateQuizzes(randomQuizzes);
+        if (window.location.search.includes('reload')) {
+            const firstQuiz = document.getElementById('first-question');
+            const firstQuizHeight = firstQuiz.offsetHeight;
+            const position = firstQuiz.getBoundingClientRect().top + window.pageYOffset - (window.innerHeight - firstQuizHeight) / 2;
+            window.scrollTo({ top: position, behavior: 'smooth' });
+        }
     } catch (error) {
         console.error(error.message);
     }
@@ -77,6 +83,9 @@ function generateQuizzes(quizzes) {
         quiz.correct = `radio${quizIndex + 1}-${quiz.correct}`; // 正解のIDを生成
         const quizCard = document.createElement('div');
         quizCard.className = 'quiz-card fadein';
+        if (quizIndex === 0) {
+            quizCard.id = 'first-question';
+        }
         quizCard.innerHTML = `
             <p class="quiz-num"><span class="big">${quizIndex + 1}</span>問目</p>
             <p class="quiz-sentence">${quiz.question}</p>
@@ -140,6 +149,7 @@ function showResults() {
         if (currentQuiz >= displayedQuizzes.length) {
             setTimeout(scrollToResults, 3000);
             $('.sns-box').css('display','flex');
+            $('.try-again').show();
             displayScore();
             let correctAnswerRate = Math.round((correctAnswers / displayedQuizzes.length) * 100);
             let text;
@@ -163,6 +173,7 @@ function showResults() {
             radio.disabled = true;
         });
         $('.sns-box').css('display','none');
+        $('.to-grade').hide();
         setTimeout(displayResult, 3000);
     }
 
@@ -190,4 +201,7 @@ $(document).ready(function(){
     //デバイス判定によるイベントの決定
     var eventType = (isTouchDevice) ? 'touchend' : 'click';
     $('.to-grade').on(eventType, showResults);
+    $('.try-again').click(function() {
+        window.location.href = window.location.pathname + '?reload#first-question';
+    });
 });
