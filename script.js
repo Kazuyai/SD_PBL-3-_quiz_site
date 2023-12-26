@@ -158,6 +158,10 @@ function showResults() {
             return;
         }
 
+        const radioButtons = document.querySelectorAll('.quiz-box input[type="radio"]');
+        radioButtons.forEach(radio => {
+            radio.disabled = true;
+        });
         $('.sns-box').css('display','none');
         setTimeout(displayResult, 3000);
     }
