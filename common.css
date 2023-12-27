@@ -41,14 +41,6 @@ header {
     z-index: 100;
 }
 
-.nav-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 20px;
-}
-
 .openbtn{
     display: block;
 	position: relative;
