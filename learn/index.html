@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="フェイクニュースについて学ぼう" />
+    <meta property="og:description" content="フェイクニュースについて学ぼう" />
+    <meta property="og:image" content="https://kazuyai.github.io/SD_PBL-3-_quiz_site/Images/MainVisual.png" />
+    <title>SD PBL(3)</title>
+    <link rel="apple-touch-icon" href="./Images/Tab_Icon.png" sizes="180×180">
+    <link rel="icon" type="image/x-icon" href="./Images/Tab_Icon.png">
+    <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="openbtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="g-nav">
+            <ul>
+                <li><a href="../index.html">クイズ</a></li> 
+                <li><a href="./index.html">学ぼう</a></li> 
+            </ul>
+        </nav>
+        <div class="circle-bg"></div>
+    </header>
+    <div id="splash">
+        <div id="splash_logo">
+            <h1>J</h1>
+            <img src="" alt="" class="fadeUp">
+        </div>
+    </div>
+    <main>
+        <section id="main-visual">
+            <div class="filter">
+                <h1 class="title">フェイクニュースクイズ</h1>
+                <h4 class="sub-title">フェイクニュースについて<br>どれくらい知ってる？</h4>
+                <div class="scrolldown2"><span>Scroll</span></div>
+            </div>
+        </section>
+        <section id="explain" class="fadein">
+            <h2 style="transition-delay: 0.2s;">フェイクニュースについて<br>知っていますか？</h2>
+            <p style="transition-delay: 1.6s;">近年、問題になっているフェイクニュース</p>
+            <p style="transition-delay: 2.8s;">皆さんは意識できているでしょうか？</p>
+            <p style="transition-delay: 4.0s;">このクイズを通して<br>フェイクニュースについての<br>認識を確かめてみましょう</p>
+            <p style="transition-delay: 5.2s;">フェイクニュースに関するクイズが<br>10問出題されます</p>
+            <p style="transition-delay: 6.4s;">最も正しいと思うものを選んでください</p>
+        </section>
+        <section id="quiz">
+            <div class="quiz-box">
+                <!--ここに問題が入る-->
+            </div>
+            <div id="results"></div>
+            <div class="sns-box">
+                <div class="b-twitter">
+                    <a href="#" id="twitter-share-link" target="_blank" rel="nofollow noopener">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>                    
+                </div>
+                <div class="b-line">
+                    <a href="#" id="line-share-link" target="_blank" rel="nofollow noopener">
+                        <i class="fab fa-line"></i>
+                    </a>
+                </div>
+            </div>
+            <button class="to-grade">採点する</button>
+            <button class="try-again" style="display: none;">もう一度</button>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="./common.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
