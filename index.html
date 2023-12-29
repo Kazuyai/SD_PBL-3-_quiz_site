@@ -39,10 +39,44 @@
         </div>
     </div>
     <main>
-        
+        <section id="main-visual">
+            <div class="filter">
+                <h1 class="title">フェイクニュースクイズ</h1>
+                <h4 class="sub-title">フェイクニュースについて<br>どれくらい知ってる？</h4>
+                <div class="scrolldown2"><span>Scroll</span></div>
+            </div>
+        </section>
+        <section id="explain" class="fadein">
+            <h2 style="transition-delay: 0.2s;">フェイクニュースについて<br>知っていますか？</h2>
+            <p style="transition-delay: 1.6s;">近年、問題になっているフェイクニュース</p>
+            <p style="transition-delay: 2.8s;">皆さんは意識できているでしょうか？</p>
+            <p style="transition-delay: 4.0s;">このクイズを通して<br>フェイクニュースについての<br>認識を確かめてみましょう</p>
+            <p style="transition-delay: 5.2s;">フェイクニュースに関するクイズが<br>10問出題されます</p>
+            <p style="transition-delay: 6.4s;">最も正しいと思うものを選んでください</p>
+        </section>
+        <section id="quiz">
+            <div class="quiz-box">
+                <!--ここに問題が入る-->
+            </div>
+            <div id="results"></div>
+            <div class="sns-box">
+                <div class="b-twitter">
+                    <a href="#" id="twitter-share-link" target="_blank" rel="nofollow noopener">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>                    
+                </div>
+                <div class="b-line">
+                    <a href="#" id="line-share-link" target="_blank" rel="nofollow noopener">
+                        <i class="fab fa-line"></i>
+                    </a>
+                </div>
+            </div>
+            <button class="to-grade">採点する</button>
+            <button class="try-again" style="display: none;">もう一度</button>
+        </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="../common.js"></script>
+    <script src="./common.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>

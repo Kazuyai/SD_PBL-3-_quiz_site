@@ -1,8 +1,3 @@
-$(window).on('load',function(){
-    $("#splash").delay(1500).fadeOut('slow');
-    $("#splash_logo").delay(1200).fadeOut('slow');
-});
-
 let displayedQuizzes = [];
 
 // CSVデータを読み込んでオブジェクトの配列に変換する関数
