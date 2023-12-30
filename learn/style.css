@@ -2,3 +2,7 @@
     background:url("../Images/MainVisual_learn.png") no-repeat center;
     background-size: 150%;
 }
+
+section:not(#main-visual) {
+    padding: 5em 0;
+}
