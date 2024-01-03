@@ -6,3 +6,21 @@
 section:not(#main-visual) {
     padding: 5em 0;
 }
+
+.TextTyping span {
+	display: none;
+}
+
+.TextTyping::after {
+ 	content: "|";
+	animation: typinganime .8s ease infinite;
+}
+
+@keyframes typinganime{
+	from{opacity:0}
+	to{opacity:1}
+}
+
+.TextTyping.completed::after {
+    display: none;
+}
