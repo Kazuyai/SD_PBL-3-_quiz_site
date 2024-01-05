@@ -10,6 +10,7 @@ function TextTypingAnime() {
 				$(this).delay(time * i).fadeIn(time, function() {
                     if (i === thisChild.length - 1) {
                         $(this).parent().addClass("completed");
+                        $(this).parent().addClass("underline");
                     }
                 });
 			});
@@ -72,6 +73,7 @@ $(document).ready(function() {
     });
 });
 */
+/*
 $(document).ready(function() {
     var sections = $('section');
     var offsets = sections.map(function() {
@@ -103,3 +105,4 @@ $(document).ready(function() {
         }, 66);
     });
 });
+*/
