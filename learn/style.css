@@ -9,7 +9,11 @@ section:not(#main-visual) {
 	justify-content: center;
 	/*height: 100vh;*/
 	min-height: 100vh;
-    padding: 5em 30px;
+    padding: 5em 10vw;
+}
+
+section.fake-news {
+	padding: 5em 10px !important;
 }
 
 section h2 {
