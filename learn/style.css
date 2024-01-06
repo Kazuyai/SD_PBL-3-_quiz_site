@@ -95,6 +95,20 @@ section:not(.fake-news) p {
 	background: #ebe6b1;
 }
 
+#cause ul {
+	padding-left: 28px;
+	line-height: 2;
+}
+
+#cause ul:nth-child(5) {
+	padding-bottom: 30px;
+}
+
+#cause li {
+	list-style: disc;
+	text-align: left;
+}
+
 #goal {
 	background: #fcfae5;
 }
