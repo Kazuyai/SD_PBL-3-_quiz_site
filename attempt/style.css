@@ -64,6 +64,8 @@ section:not(#goal, #finalgoal) p {
 }
 
 #goal {
+    padding-top: 120px !important;
+    min-height: 0px !important;
     background: #e8dcb9;
 }
 
@@ -84,6 +86,20 @@ section:not(#goal, #finalgoal) p {
 	background: -moz-linear-gradient(top, #e8dcb9, #ebe5cd);
 	background: -webkit-linear-gradient(top, #e8dcb9, #ebe5cd);
 	background: linear-gradient(to bottom, #e8dcb9, #ebe5cd);
+}
+
+#attempt ul {
+	padding-left: 28px;
+	line-height: 2;
+}
+
+#attempt ul:nth-child(5) {
+	padding-bottom: 30px;
+}
+
+#attempt li {
+	list-style: disc;
+	text-align: left;
 }
 
 #finalgoal {
