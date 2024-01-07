@@ -109,23 +109,6 @@ section:not(.fake-news) p {
 	text-align: left;
 }
 
-#goal {
-	background: #fcfae5;
-}
-
-#approach {
-	background: #f2f0e9;
-}
-
-#attempt {
-	background: #F4F4F3;
-}
-
-#attempt .connection {
-	background: -moz-linear-gradient(top, #f2f0e9, #F4F4F3);
-	background: -webkit-linear-gradient(top, #f2f0e9, #F4F4F3);
-	background: linear-gradient(to bottom, #f2f0e9, #F4F4F3);
-}
 
 .underline::before {
 	position: absolute;
