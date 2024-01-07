@@ -316,3 +316,7 @@ header {
 	transform: translate(0, 0);
 	transition: all 1.4s ease-in-out;
 }
+
+.red {
+    color: red;
+}
