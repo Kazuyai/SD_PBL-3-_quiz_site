@@ -29,7 +29,7 @@ section h2 {
 	position: relative;
 	width: fit-content;
     margin: 1.5em auto 1.5em 0;
-	font-size: 6.6vw;
+	font-size: min(6.6vw, 1.5em);
     font-family: 'Kiwi Maru', serif;
 }
 
@@ -118,6 +118,7 @@ section:not(.fake-news) p {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	padding: 3em 0;
 }
 
 .measures-card {
@@ -140,6 +141,20 @@ section:not(.fake-news) p {
 .measures-card p {
 	width: 90%;
 	line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+	.measures-box {
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 50px;
+	}
+	.measures-card {
+		border-radius: 3vw;
+	}
+	.measures-card p {
+		width: 70%;
+	}
 }
 
 .underline::before {
@@ -167,6 +182,13 @@ section:not(.fake-news) p {
 .big {
 	font-size: 20px;
 	padding: 1em 5px;
+}
+
+@media screen and (min-width: 768px) {
+	.big {
+		font-size: 30px;
+	}
+	
 }
 
 .TextTyping span {
