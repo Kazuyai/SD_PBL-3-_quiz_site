@@ -54,7 +54,7 @@ section>p {
 	padding: 0.6em 0;
 }
 
-section:not(#goal) p {
+section:not(#goal, #finalgoal) p {
     text-align: left;
 }
 
@@ -84,6 +84,18 @@ section:not(#goal) p {
 	background: -moz-linear-gradient(top, #e8dcb9, #ebe5cd);
 	background: -webkit-linear-gradient(top, #e8dcb9, #ebe5cd);
 	background: linear-gradient(to bottom, #e8dcb9, #ebe5cd);
+}
+
+#finalgoal {
+    background: #f2f0e9;
+}
+
+#finalgoal h2 {
+    margin-left: auto;
+}
+
+#finalgoal p {
+    line-height: 2;
 }
 
 .underline::before {
