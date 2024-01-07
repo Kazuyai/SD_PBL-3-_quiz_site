@@ -1,0 +1,132 @@
+#main-visual {
+    background:url("../Images/MainVisual_attempt.png") no-repeat center;
+    background-size: 150%;
+}
+
+section:not(#main-visual) {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/*height: 100vh;*/
+	min-height: 100vh;
+    padding: 0 10vw 100px 10vw;
+}
+
+section .connection {
+	position: absolute;
+	top: -80px;
+	left: 0;
+	width: 100%;
+	height: 80px;
+}
+
+section .connection.arrow {
+    top: 0;
+    height: 0;
+}
+
+section .connection.arrow::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 80px solid #fcfae5;
+    transform: translateX(-50%);
+}
+
+@media screen and (min-width: 768px) {
+    section .connection.arrow::after {
+        border-top: 10vh solid #fcfae5;
+    }
+}
+
+section h2 {
+	position: relative;
+	width: fit-content;
+    margin: 1.5em auto 1.5em 0;
+    font-family: 'Kiwi Maru', serif;
+}
+
+section>p {
+	padding: 0.6em 0;
+}
+
+section:not(#goal) p {
+    text-align: left;
+}
+
+#approach {
+	background: #fcfae5;
+    padding-bottom: 30px !important;
+}
+
+#goal {
+    background: #e8dcb9;
+}
+
+#goal h2 {
+    margin-left: auto;
+}
+
+#goal p {
+    line-height: 2;
+    font-size: min(18px, 5vw);
+}
+
+#attempt {
+	background: #ebe5cd;
+}
+
+#attempt .connection {
+	background: -moz-linear-gradient(top, #e8dcb9, #ebe5cd);
+	background: -webkit-linear-gradient(top, #e8dcb9, #ebe5cd);
+	background: linear-gradient(to bottom, #e8dcb9, #ebe5cd);
+}
+
+.underline::before {
+	position: absolute;
+	left: 0;
+	content: '';
+	width: 100%;
+	height: 3px;
+	background: #000;
+	bottom: -3px;
+	transform: scale(0, 1);
+	transform-origin: left top;
+	animation: underlineanime .8s ease forwards;
+	animation-delay: .4s;
+}
+@keyframes underlineanime {
+	from {
+		transform: scale(0, 1);
+	}
+	to {
+		transform: scale(1, 1);
+	}
+}
+
+.big {
+	font-size: 20px;
+	padding: 1em 5px;
+}
+
+.TextTyping span {
+	display: none;
+}
+
+.TextTyping::after {
+ 	content: "|";
+	animation: typinganime .8s ease infinite;
+}
+
+@keyframes typinganime{
+	from{opacity:0}
+	to{opacity:1}
+}
+
+.TextTyping.completed::after {
+    display: none;
+}
