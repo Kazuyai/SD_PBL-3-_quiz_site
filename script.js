@@ -110,29 +110,56 @@ function showResults() {
 
     function displayResult() {
         const userAnswer = document.querySelector(`input[name="radio${currentQuiz + 1}"]:checked`);
-        const result = document.createElement('div');
+        const correctOption = displayedQuizzes[currentQuiz].options[parseInt(displayedQuizzes[currentQuiz].correct.split('-')[1]) - 1];
+        const questionText = displayedQuizzes[currentQuiz].question;
         let isCorrect = false;
-        if (userAnswer && userAnswer.id == displayedQuizzes[currentQuiz].correct) {
-            result.textContent = `${currentQuiz + 1}問目: 正解！`;
+
+        const result = document.createElement('div');
+        if (userAnswer && userAnswer.id === displayedQuizzes[currentQuiz].correct) {
+            result.innerHTML = `<span>${currentQuiz + 1}問目: <span class="red">正解！</span> </span>`;
             correctAnswers++;
             isCorrect = true;
         } else {
-            result.textContent = `${currentQuiz + 1}問目: 不正解`;
+            result.innerHTML = `<span>${currentQuiz + 1}問目: <span class="blue">不正解</span> </span>`;
         }
+
+        // 正解の詳細を表示するリンクを追加
+        const detailLink = document.createElement('a');
+        detailLink.href = '#';
+        detailLink.textContent = '正解を確認する';
+        detailLink.className = 'show-answer';
+        detailLink.dataset.quizIndex = currentQuiz;
+        result.appendChild(detailLink);
 
         resultsContainer.appendChild(result);
 
-        // 選択した選択肢の上に〇または✕を表示
+        // 正解の詳細カードを作成
+        const correctAnswerCard = document.createElement('div');
+        correctAnswerCard.className = 'correct-answer-card hidden';
+        correctAnswerCard.innerHTML = `
+            <p><span>正解：</span><br>${correctOption}</p>
+            <p><span>問題：</span><br>${questionText}</p>
+        `;
+        resultsContainer.appendChild(correctAnswerCard);
+
+        // 正解の詳細リンクのクリックイベント
+        detailLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            correctAnswerCard.classList.toggle('hidden');
+        });
+
+        // 選択した選択肢の上に〇または✕の画像を表示
         if (userAnswer) {
-            const mark = document.createElement('span');
-            mark.textContent = isCorrect ? '〇' : '✕';
+            const mark = document.createElement('img');
+            mark.src = isCorrect ? './Images/maru.png' : './Images/batu.png';
             mark.className = isCorrect ? 'correct-mark' : 'incorrect-mark';
             userAnswer.parentNode.appendChild(mark);
-        
+
             setTimeout(() => {
                 mark.style.opacity = 1;
             }, 100);
-        }        
+        }
+
 
         // ヘッダーとビューポートの高さを考慮したスクロール
         const quizCard = document.getElementsByClassName('quiz-card')[currentQuiz];

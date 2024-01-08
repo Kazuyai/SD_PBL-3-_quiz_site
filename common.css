@@ -7,14 +7,14 @@ body {
     width: 100%;
     height: 100%;
     text-align: center;
-    font-size: max(4.2vw, 16px);
+    font-size: 4.2vw;
     font-family: "Noto Sans JP", "Noto Sans";
     font-weight: bold;
 }
 
 @media screen and (min-width: 768px) {
     body {
-        font-size: 20px;
+        font-size: min(4.2vw, 20px);
     }
 }
 
@@ -100,7 +100,12 @@ header {
     width: 30%;
 }
 
+#g-nav {
+    display: none;
+}
+
 #g-nav.panelactive{
+    display: block;
     position:fixed;
     z-index: 102;
 	top: 0;
@@ -137,7 +142,7 @@ header {
 }
 
 #g-nav.panelactive #g-nav-list{
-     display: block;
+    display: block;
 }
 
 #g-nav ul {
@@ -174,7 +179,7 @@ header {
 	list-style: none;
 }
 
-#g-nav li a{
+#g-nav li a {
 	color: #ececec;
 	text-decoration: none;
 	padding:10px;
@@ -185,9 +190,9 @@ header {
 	font-weight: bold;
 }
 
-@media screen and (max-width: 768px) {
-    .nav-list {
-        display: none;
+@media screen and (min-width: 768px) {
+    #g-nav li a {
+        font-size: min(6vw, 30px);
     }
 }
 
@@ -326,4 +331,8 @@ header {
 
 .red {
     color: red;
+}
+
+.blue {
+    color: blue;
 }

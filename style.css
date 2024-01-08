@@ -91,6 +91,12 @@
 	font-weight: 400;
 }
 
+@media screen and (min-width: 768px) {
+	.answer-btn-box {
+		font-size: min(3vw, 20px);
+	}
+}
+
 .answer-btn-box label {
 	position: relative;
 	display: flex;
@@ -140,33 +146,71 @@ input[type="radio"]:checked + .radio-button {
 
 .correct-mark,
 .incorrect-mark {
+	position: absolute;
+	width: 24%;
 	opacity: 0;
 	transition: opacity 0.8s ease-in-out;
-}
-
-.correct-mark {
-	position: absolute;
-	color: rgb(158, 255, 73);
-	font-weight: bold;
-	font-size: 20vw;
-	z-index: 99;
-}
-
-.incorrect-mark {
-	position: absolute;
-	color: rgb(255, 18, 18);
-	font-weight: bold;
-	font-size: 20vw;
 	z-index: 99;
 }
 
 #results {
+	width: 90%;
+	max-width: 600px;
 	padding-top: 30px;
+}
+
+#results>div:not(.quiz-score) {
+	width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#results>div>span {
+	padding-right: 5vw;
+}
+
+#results a {
+	color: rgb(79, 120, 255);
+	text-decoration: underline;
+}
+
+#results .hidden {
+	display: none;
+}
+
+.correct-answer-card {
+	padding: 2vw;
+	margin: 10px auto 30px auto !important;
+    border: solid 3px;
+    border-radius: 3vw;
+    text-align: left !important;
+}
+
+.correct-answer-card p {
+	padding-left: 2vw;
+}
+
+.correct-answer-card p:first-child {
+	margin-bottom: 10px;
+}
+
+.correct-answer-card p span {
+	margin-left: -2vw;
+}
+
+.show-answer {
+	color: #000;
 }
 
 .quiz-score {
 	padding: 20px 0;
-	font-size: 5vw;
+	font-size: 5vw
+}
+
+@media screen and (min-width: 768px) {
+    .quiz-score {
+        font-size: min(5vw, 30px);
+    }
 }
 
 .to-grade,
@@ -178,10 +222,17 @@ input[type="radio"]:checked + .radio-button {
 	background-color: white;
 	color: #53b300;
 	border: #53b300 3px solid;
-	font-size: 20px;
+	font-size: 5vw;
 	font-weight: bold;
 	cursor: pointer;
 	transition: 0.24s;
+}
+
+@media screen and (min-width: 768px) {
+	.to-grade,
+	.try-again {
+		font-size: min(5vw, 32px);
+	}
 }
 
 .to-grade:hover,
