@@ -158,6 +158,16 @@ function showResults() {
             setTimeout(() => {
                 mark.style.opacity = 1;
             }, 100);
+        } else {
+            const mark = document.createElement('img');
+            mark.src = './Images/batu.png';
+            mark.className = 'incorrect-mark not-answered';
+            const quizSentence = document.getElementsByClassName('quiz-card')[currentQuiz].getElementsByClassName('quiz-sentence')[0];
+            quizSentence.appendChild(mark);
+
+            setTimeout(() => {
+                mark.style.opacity = 1;
+            }, 100);
         }
 
 
