@@ -181,6 +181,7 @@ function showResults() {
         if (currentQuiz >= displayedQuizzes.length) {
             setTimeout(scrollToResults, 3000);
             $('.sns-box').css('display','flex');
+            $('#results').css('display','block');
             $('.try-again').show();
             displayScore();
             let correctAnswerRate = Math.round((correctAnswers / displayedQuizzes.length) * 100);
@@ -192,7 +193,7 @@ function showResults() {
             } else {
                 text = encodeURIComponent(`フェイクニュースクイズの点数は${correctAnswerRate}点です。\n`);    
             }
-            let twitterUrl = `https://twitter.com/intent/tweet?text=${text}&hashtags=SD_PBL3&url=https://kazuyai.github.io/SD_PBL-3-_quiz_site/`;
+            let twitterUrl = `https://twitter.com/intent/tweet?text=${text}%0a%23SD_PBL3%20%23フェイクニュースクイズ%0a&url=https://kazuyai.github.io/SD_PBL-3-_quiz_site/`;
             document.getElementById('twitter-share-link').setAttribute('href', twitterUrl);
             let lineUrl = `http://line.me/R/msg/text/?${text} https://kazuyai.github.io/SD_PBL-3-_quiz_site/`;
             document.getElementById('line-share-link').setAttribute('href', lineUrl);
