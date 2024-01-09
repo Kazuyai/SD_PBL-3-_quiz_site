@@ -1,6 +1,6 @@
 #main-visual {
-    background:url("../Images/MainVisual_attempt.png") no-repeat center;
-    background-size: 150%;
+    background:url("../Images/attempt.png") no-repeat center;
+    background-size: 100%;
 }
 
 section:not(#main-visual) {
