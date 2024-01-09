@@ -243,6 +243,14 @@ header {
     background-size:cover;
 }
 
+@media screen and (min-width: 768px) {
+    #main-visual {
+        background-size: 50%;
+        background-color: #6cb4f3;
+    }
+    
+}
+
 #main-visual .filter {
     display: flex;
 	flex-direction: column;

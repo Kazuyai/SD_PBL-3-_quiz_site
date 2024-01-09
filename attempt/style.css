@@ -3,6 +3,13 @@
     background-size: 100%;
 }
 
+@media screen and (min-width: 768px) {
+	#main-visual {
+		background-size: 50%;
+		background-color: #c5b393;
+	}
+}
+
 section:not(#main-visual) {
 	position: relative;
 	display: flex;

@@ -1,6 +1,13 @@
 #main-visual {
     background:url("../Images/learn.png") no-repeat center;
-    background-size: 150%;
+    background-size: 110%;
+}
+
+@media screen and (min-width: 768px) {
+	#main-visual {
+		background-size: 50%;
+		background-color: #c6e0e3;
+	}
 }
 
 section:not(#main-visual) {
