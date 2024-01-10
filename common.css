@@ -234,6 +234,21 @@ header {
     }
 }
 
+#splash_logo img {
+    animation: logoanime 1s ease-in-out forwards;
+}
+
+@keyframes logoanime {
+    0% {
+        opacity: 0;
+        transform: translate(0, 30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
 #main-visual {
     display: flex;
 	flex-direction: column;
