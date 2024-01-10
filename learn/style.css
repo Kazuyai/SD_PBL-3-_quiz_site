@@ -1,6 +1,6 @@
 #main-visual {
     background:url("../Images/learn.png") no-repeat center;
-    background-size: 110%;
+    background-size: cover;
 }
 
 @media screen and (min-width: 768px) {
