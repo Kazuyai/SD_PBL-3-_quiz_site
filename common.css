@@ -203,6 +203,7 @@ header {
 	height: 100%;
 	z-index: 999;
 	background: #333;
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
 	text-align: center;
 	color: #fff;
 }
