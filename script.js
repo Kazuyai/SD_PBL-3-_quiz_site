@@ -245,6 +245,13 @@ function showResults() {
 $(document).ready(function(){
     $('.to-grade').on(eventType, showResults);
     $('.try-again').click(function() {
-        window.location.href = window.location.pathname + '?reload#first-question';
+        // 現在のURLからクエリパラメータを除去
+        var currentUrlWithoutQuery = window.location.pathname;
+    
+        // ランダムなクエリパラメータを生成
+        var randomQuery = "?reload=" + new Date().getTime();
+    
+        // ページを再読み込み
+        window.location.href = currentUrlWithoutQuery + randomQuery + '#first-question';
     });
 });
