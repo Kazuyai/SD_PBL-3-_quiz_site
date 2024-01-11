@@ -118,7 +118,6 @@ function showResults() {
     function displayResult() {
         const userAnswer = document.querySelector(`input[name="radio${currentQuiz + 1}"]:checked`);
         const correctOption = displayedQuizzes[currentQuiz].options[parseInt(displayedQuizzes[currentQuiz].correct.split('-')[1]) - 1];
-        console.log(currentQuiz);
         const questionText = displayedQuizzes[currentQuiz].question;
         let isCorrect = false;
         let timeouttime = isSkipping ? 0 : 3000;
@@ -246,12 +245,8 @@ function showResults() {
 $(document).ready(function(){
     $('.to-grade').on(eventType, showResults);
     $('.try-again').click(function() {
-        // 現在のURLからクエリパラメータを除去
         var currentUrlWithoutQuery = window.location.pathname;
-    
-        // ランダムなクエリパラメータを生成
-        var randomQuery = "?reload=" + new Date().getTime();
-    
+        var randomQuery = "?reload=" + new Date().getTime();    
         // ページを再読み込み
         window.location.href = currentUrlWithoutQuery + randomQuery + '#first-question';
     });
