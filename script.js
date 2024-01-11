@@ -118,6 +118,7 @@ function showResults() {
     function displayResult() {
         const userAnswer = document.querySelector(`input[name="radio${currentQuiz + 1}"]:checked`);
         const correctOption = displayedQuizzes[currentQuiz].options[parseInt(displayedQuizzes[currentQuiz].correct.split('-')[1]) - 1];
+        console.log(currentQuiz);
         const questionText = displayedQuizzes[currentQuiz].question;
         let isCorrect = false;
         let timeouttime = isSkipping ? 0 : 3000;
@@ -216,7 +217,7 @@ function showResults() {
         });
         $('.sns-box').css('display','none');
         $('.to-grade').hide();
-        setTimeout(displayResult, timeouttime);
+        timeoutId = setTimeout(displayResult, timeouttime);
     }
 
     function scrollToResults() {
