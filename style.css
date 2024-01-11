@@ -222,7 +222,8 @@ input[type="radio"]:checked + .radio-button {
 }
 
 .to-grade,
-.try-again {
+.try-again,
+.skip-results {
 	width: 90%;
 	max-width: 600px;
 	margin: 50px 0;
@@ -238,15 +239,25 @@ input[type="radio"]:checked + .radio-button {
 
 @media screen and (min-width: 768px) {
 	.to-grade,
-	.try-again {
+	.try-again,
+	.skip-results {
 		font-size: min(5vw, 32px);
 	}
 }
 
 .to-grade:hover,
-.try-again:hover {
+.try-again:hover,
+.skip-results:hover {
 	background-color: #53b300;
 	color: white;
+}
+
+.skip-results {
+	position: fixed;
+	width: 80%;
+	max-width: 550px;
+	margin: 0;
+	bottom: 2vh;
 }
 
 .sns-box {

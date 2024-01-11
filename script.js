@@ -1,5 +1,10 @@
 let displayedQuizzes = [];
 
+//デバイス判定（タッチが有効か否か）
+var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+//デバイス判定によるイベントの決定
+var eventType = (isTouchDevice) ? 'touchend' : 'click';
+
 // CSVデータを読み込んでオブジェクトの配列に変換する関数
 function convertCSVtoArray(str){
     var result = [];
@@ -107,12 +112,15 @@ function showResults() {
     let correctAnswers = 0;
     const resultsContainer = document.getElementById('results');
     resultsContainer.innerHTML = ''; // 既存の結果をクリア
+    let isSkipping = false;
+    let timeoutId;
 
     function displayResult() {
         const userAnswer = document.querySelector(`input[name="radio${currentQuiz + 1}"]:checked`);
         const correctOption = displayedQuizzes[currentQuiz].options[parseInt(displayedQuizzes[currentQuiz].correct.split('-')[1]) - 1];
         const questionText = displayedQuizzes[currentQuiz].question;
         let isCorrect = false;
+        let timeouttime = isSkipping ? 0 : 3000;
 
         const result = document.createElement('div');
         if (userAnswer && userAnswer.id === displayedQuizzes[currentQuiz].correct) {
@@ -179,7 +187,8 @@ function showResults() {
 
         currentQuiz++;
         if (currentQuiz >= displayedQuizzes.length) {
-            setTimeout(scrollToResults, 3000);
+            $('.skip-results').hide();
+            setTimeout(scrollToResults, timeouttime);
             $('.sns-box').css('display','flex');
             $('#results').css('display','block');
             $('.try-again').show();
@@ -207,7 +216,7 @@ function showResults() {
         });
         $('.sns-box').css('display','none');
         $('.to-grade').hide();
-        setTimeout(displayResult, 3000);
+        setTimeout(displayResult, timeouttime);
     }
 
     function scrollToResults() {
@@ -225,14 +234,15 @@ function showResults() {
         resultsContainer.appendChild(scoreDisplay);
     }
 
+    $('.skip-results').show().on(eventType, function() {
+        isSkipping = true;
+        clearTimeout(timeoutId);
+        displayResult();
+    });
     displayResult();
 }
 
 $(document).ready(function(){
-    //デバイス判定（タッチが有効か否か）
-    var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
-    //デバイス判定によるイベントの決定
-    var eventType = (isTouchDevice) ? 'touchend' : 'click';
     $('.to-grade').on(eventType, showResults);
     $('.try-again').click(function() {
         window.location.href = window.location.pathname + '?reload#first-question';
