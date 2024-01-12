@@ -302,3 +302,70 @@ input[type="radio"]:checked + .radio-button {
     text-rendering: auto;
     line-height: 1;
 }
+
+#progress-bar {
+	position: fixed;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.circle-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+  
+.circle {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: gray;
+	position: relative;
+	margin: 0 10px;
+}
+
+.circle::before,
+.circle::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: 20px;
+	height: 2px;
+	background-color: gray;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+.circle::before {
+	left: 0;
+}
+
+.circle::after {
+	left: 20px;
+}
+
+.red-circle-border::before {
+	left: -3px;
+}
+
+.circle:first-child::before,
+.circle:last-child::after {
+	display: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.red-circle-border {
+	border: 3px solid #ff4e4e;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+.yellow-green-circle {
+	background-color: limegreen;
+}  

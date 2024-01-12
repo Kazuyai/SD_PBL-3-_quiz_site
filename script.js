@@ -102,10 +102,79 @@ function generateQuizzes(quizzes) {
             </div>
         `;
         quizBox.appendChild(quizCard);
+        const radioButtons = quizCard.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((radioButton) => {
+            radioButton.addEventListener('change', function() {
+                document.getElementById('circle' + (quizIndex + 1)).classList.add('yellow-green-circle');
+            });
+        });
+    });
+    window.addEventListener('scroll', updateProgressBar);
+    window.addEventListener('scroll', function() {
+        const quizSection = document.getElementById('quiz');
+        const progressBar = document.getElementById('progress-bar');
+      
+        // #quiz セクションがビューポートに入ったかどうかチェック
+        if (isElementInView(quizSection)) {
+            progressBar.classList.remove('hidden');
+        } else {
+            progressBar.classList.add('hidden');
+        }
     });
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
+
+function updateProgressBar() {
+    const quizCards = document.querySelectorAll('.quiz-card');
+    let closest = null;
+    let closestDistance = Number.MAX_VALUE;
+
+    // 各カードとビューポート中心との距離を計算する
+    quizCards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.top + cardRect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+        const distanceToCenter = Math.abs(viewportCenter - cardCenter);
+
+        // もっとも中心に近いカードを記録する
+        if (distanceToCenter < closestDistance) {
+            closest = index;
+            closestDistance = distanceToCenter;
+        }
+    });
+
+    // クラスを適用する
+    quizCards.forEach((card, index) => {
+        const circle = document.getElementById('circle' + (index + 1));
+        circle.classList.remove('red-circle-border', 'yellow-green-circle'); // 既存のスタイルをリセット
+
+        // 最も中心に近い要素にだけ赤い枠線を適用
+        if (index === closest) {
+            circle.classList.add('red-circle-border');
+        }
+        // 解答済みの問題には黄緑色を適用
+        if (card.querySelector('input[type="radio"]:checked')) {
+            circle.classList.add('yellow-green-circle');
+        }
+    });
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        // 要素の中心が画面内にあるかどうか
+        ((rect.top + rect.bottom) / 2) > 0 && ((rect.top + rect.bottom) / 2) < (window.innerHeight || document.documentElement.clientHeight)
+    );
+}
+
+function isElementInView(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top <= window.innerHeight &&
+        rect.bottom >= 0
+    );
+}
 
 function showResults() {
     let currentQuiz = 0;
@@ -251,3 +320,9 @@ $(document).ready(function(){
         window.location.href = currentUrlWithoutQuery + randomQuery + '#first-question';
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // 初期状態でプログレスバーを非表示にする
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.classList.add('hidden');
+});
+  
