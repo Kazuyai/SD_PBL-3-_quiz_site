@@ -1,3 +1,5 @@
+const progressBar = document.getElementById('progress-bar');
+
 let displayedQuizzes = [];
 
 //デバイス判定（タッチが有効か否か）
@@ -112,7 +114,6 @@ function generateQuizzes(quizzes) {
     window.addEventListener('scroll', updateProgressBar);
     window.addEventListener('scroll', function() {
         const quizSection = document.getElementById('quiz');
-        const progressBar = document.getElementById('progress-bar');
       
         // #quiz セクションがビューポートに入ったかどうかチェック
         if (isElementInView(quizSection)) {
@@ -256,6 +257,8 @@ function showResults() {
 
         currentQuiz++;
         if (currentQuiz >= displayedQuizzes.length) {
+            window.removeEventListener('scroll', updateProgressBar);
+            progressBar.remove();
             $('.skip-results').hide();
             setTimeout(scrollToResults, timeouttime);
             $('.sns-box').css('display','flex');
@@ -322,7 +325,6 @@ $(document).ready(function(){
 });
 document.addEventListener('DOMContentLoaded', function() {
     // 初期状態でプログレスバーを非表示にする
-    const progressBar = document.getElementById('progress-bar');
     progressBar.classList.add('hidden');
 });
   
